@@ -75,6 +75,13 @@
             color: #ffebff;
             text-decoration: underline;
         }
+        /* Estilos das abas */
+        .tab-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .tab-btn:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -88,6 +95,7 @@
         <h2>Transforme sua vida com resultados comprovados!</h2>
         <p>Consultas a partir de <strong>R$ 99,99</strong> com protocolos exclusivos e acompanhamento personalizado.</p>
         
+        <!-- Cards dos serviços -->
         <div class="servicos">
             <div class="card">
                 <h3>Protocolos de Emagrecimento</h3>
@@ -110,70 +118,78 @@
                 <a class="btn-wpp" href="https://wa.me/5592982499511" target="_blank">Agendar no WhatsApp</a>
             </div>
         </div>
-    <!-- Seção de Planos com Abas -->
-<div class="w-full max-w-4xl mx-auto mt-10">
-    <!-- Abas -->
-    <div class="flex border-b overflow-x-auto">
-        <!-- Gera abas de Plano 1 até Plano 5 -->
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const tabsContainer = document.getElementById("tabs");
-                const contentsContainer = document.getElementById("tab-contents");
 
-                for (let i = 1; i <= 5; i++) {
-                    // Criar botão da aba
-                    const tabButton = document.createElement("button");
-                    tabButton.className =
-                        "tab-btn px-4 py-2 text-gray-600 hover:text-blue-600 focus:outline-none";
-                    tabButton.textContent = "Plano " + i;
-                    tabButton.setAttribute("data-tab", "tab" + i);
-                    tabsContainer.appendChild(tabButton);
+        <!-- Seção de Planos com Abas -->
+        <div class="w-full max-w-4xl mx-auto mt-12 text-center">
+            <h2 class="text-2xl font-bold mb-6" style="color:#7a4fa3;">
+                Conheça nossos planos
+            </h2>
 
-                    // Criar conteúdo da aba
-                    const tabContent = document.createElement("div");
-                    tabContent.id = "tab" + i;
-                    tabContent.className = "tab-content hidden mt-4";
-                    tabContent.innerHTML = `
-                        <img src="lauana${i}.jpg" alt="Plano ${i}" class="rounded-lg shadow-lg mx-auto">
-                    `;
-                    contentsContainer.appendChild(tabContent);
-                }
+            <!-- Abas (botões) -->
+            <div id="tabs" class="flex justify-center space-x-4 flex-wrap">
+                <button class="tab-btn px-5 py-2 rounded-full bg-white shadow text-gray-600 hover:bg-purple-100 hover:text-purple-700 focus:outline-none"
+                        data-tab="tab1">Plano 1</button>
+                <button class="tab-btn px-5 py-2 rounded-full bg-white shadow text-gray-600 hover:bg-purple-100 hover:text-purple-700 focus:outline-none"
+                        data-tab="tab2">Plano 2</button>
+                <button class="tab-btn px-5 py-2 rounded-full bg-white shadow text-gray-600 hover:bg-purple-100 hover:text-purple-700 focus:outline-none"
+                        data-tab="tab3">Plano 3</button>
+                <button class="tab-btn px-5 py-2 rounded-full bg-white shadow text-gray-600 hover:bg-purple-100 hover:text-purple-700 focus:outline-none"
+                        data-tab="tab4">Plano 4</button>
+                <button class="tab-btn px-5 py-2 rounded-full bg-white shadow text-gray-600 hover:bg-purple-100 hover:text-purple-700 focus:outline-none"
+                        data-tab="tab5">Plano 5</button>
+            </div>
 
-                // Função de alternar abas
-                const tabButtons = document.querySelectorAll(".tab-btn");
-                const tabContents = document.querySelectorAll(".tab-content");
-
-                tabButtons.forEach((btn, index) => {
-                    btn.addEventListener("click", () => {
-                        tabContents.forEach((content) =>
-                            content.classList.add("hidden")
-                        );
-                        tabButtons.forEach((b) =>
-                            b.classList.remove("border-b-2", "border-blue-600", "text-blue-600")
-                        );
-
-                        document.getElementById(btn.getAttribute("data-tab")).classList.remove("hidden");
-                        btn.classList.add("border-b-2", "border-blue-600", "text-blue-600");
-                    });
-
-                    // Ativar o primeiro por padrão
-                    if (index === 0) btn.click();
-                });
-            });
-        </script>
-    </div>
-
-    <!-- Container das abas -->
-    <div id="tabs" class="flex space-x-2 mt-4"></div>
-    <div id="tab-contents"></div>
-</div>
-
+            <!-- Conteúdo das abas -->
+            <div id="tab-contents" class="mt-8">
+                <div id="tab1" class="tab-content hidden">
+                    <img src="lauana1.jpg" alt="Plano 1" class="rounded-lg shadow-lg mx-auto">
+                </div>
+                <div id="tab2" class="tab-content hidden">
+                    <img src="lauana2.jpg" alt="Plano 2" class="rounded-lg shadow-lg mx-auto">
+                </div>
+                <div id="tab3" class="tab-content hidden">
+                    <img src="lauana3.jpg" alt="Plano 3" class="rounded-lg shadow-lg mx-auto">
+                </div>
+                <div id="tab4" class="tab-content hidden">
+                    <img src="lauana4.jpg" alt="Plano 4" class="rounded-lg shadow-lg mx-auto">
+                </div>
+                <div id="tab5" class="tab-content hidden">
+                    <img src="lauana5.jpg" alt="Plano 5" class="rounded-lg shadow-lg mx-auto">
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer>
         <p>© 2025 Titanium Medical | Todos os direitos reservados.</p>
         <p>Administração: Dra. Lauana Araújo | <a href="https://wa.me/5592982499511" target="_blank">Fale direto no WhatsApp</a></p>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tabButtons = document.querySelectorAll(".tab-btn");
+            const tabContents = document.querySelectorAll(".tab-content");
+
+            tabButtons.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    // Esconde todos os conteúdos
+                    tabContents.forEach((content) => content.classList.add("hidden"));
+                    // Reseta botões
+                    tabButtons.forEach((b) => {
+                        b.classList.remove("bg-purple-600", "text-white");
+                        b.classList.add("bg-white", "text-gray-600");
+                    });
+
+                    // Mostra o conteúdo da aba clicada
+                    document.getElementById(btn.getAttribute("data-tab")).classList.remove("hidden");
+                    // Destaca botão ativo
+                    btn.classList.remove("bg-white", "text-gray-600");
+                    btn.classList.add("bg-purple-600", "text-white");
+                });
+            });
+        });
+    </script>
 </body>
 </html>
+
 
