@@ -110,6 +110,64 @@
                 <a class="btn-wpp" href="https://wa.me/5592982499511" target="_blank">Agendar no WhatsApp</a>
             </div>
         </div>
+    <!-- Seção de Planos com Abas -->
+<div class="w-full max-w-4xl mx-auto mt-10">
+    <!-- Abas -->
+    <div class="flex border-b overflow-x-auto">
+        <!-- Gera abas de Plano 1 até Plano 5 -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const tabsContainer = document.getElementById("tabs");
+                const contentsContainer = document.getElementById("tab-contents");
+
+                for (let i = 1; i <= 5; i++) {
+                    // Criar botão da aba
+                    const tabButton = document.createElement("button");
+                    tabButton.className =
+                        "tab-btn px-4 py-2 text-gray-600 hover:text-blue-600 focus:outline-none";
+                    tabButton.textContent = "Plano " + i;
+                    tabButton.setAttribute("data-tab", "tab" + i);
+                    tabsContainer.appendChild(tabButton);
+
+                    // Criar conteúdo da aba
+                    const tabContent = document.createElement("div");
+                    tabContent.id = "tab" + i;
+                    tabContent.className = "tab-content hidden mt-4";
+                    tabContent.innerHTML = `
+                        <img src="lauana${i}.jpg" alt="Plano ${i}" class="rounded-lg shadow-lg mx-auto">
+                    `;
+                    contentsContainer.appendChild(tabContent);
+                }
+
+                // Função de alternar abas
+                const tabButtons = document.querySelectorAll(".tab-btn");
+                const tabContents = document.querySelectorAll(".tab-content");
+
+                tabButtons.forEach((btn, index) => {
+                    btn.addEventListener("click", () => {
+                        tabContents.forEach((content) =>
+                            content.classList.add("hidden")
+                        );
+                        tabButtons.forEach((b) =>
+                            b.classList.remove("border-b-2", "border-blue-600", "text-blue-600")
+                        );
+
+                        document.getElementById(btn.getAttribute("data-tab")).classList.remove("hidden");
+                        btn.classList.add("border-b-2", "border-blue-600", "text-blue-600");
+                    });
+
+                    // Ativar o primeiro por padrão
+                    if (index === 0) btn.click();
+                });
+            });
+        </script>
+    </div>
+
+    <!-- Container das abas -->
+    <div id="tabs" class="flex space-x-2 mt-4"></div>
+    <div id="tab-contents"></div>
+</div>
+
     </section>
 
     <footer>
