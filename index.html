@@ -120,44 +120,81 @@
         </div>
 
         <!-- Seção de Planos com Abas -->
-        <div class="w-full max-w-4xl mx-auto mt-12 text-center">
-            <h2 class="text-2xl font-bold mb-6" style="color:#7a4fa3;">
-                Conheça nossos planos
-            </h2>
+<div class="w-full max-w-4xl mx-auto mt-12 text-center">
+    <h2 class="text-2xl font-bold mb-6" style="color:#7a4fa3;">
+        Conheça nossos planos
+    </h2>
 
-            <!-- Abas (botões) -->
-            <div id="tabs" class="flex justify-center space-x-4 flex-wrap">
-                <button class="tab-btn px-5 py-2 rounded-full bg-white shadow text-gray-600 hover:bg-purple-100 hover:text-purple-700 focus:outline-none"
-                        data-tab="tab1">Plano 1</button>
-                <button class="tab-btn px-5 py-2 rounded-full bg-white shadow text-gray-600 hover:bg-purple-100 hover:text-purple-700 focus:outline-none"
-                        data-tab="tab2">Plano 2</button>
-                <button class="tab-btn px-5 py-2 rounded-full bg-white shadow text-gray-600 hover:bg-purple-100 hover:text-purple-700 focus:outline-none"
-                        data-tab="tab3">Plano 3</button>
-                <button class="tab-btn px-5 py-2 rounded-full bg-white shadow text-gray-600 hover:bg-purple-100 hover:text-purple-700 focus:outline-none"
-                        data-tab="tab4">Plano 4</button>
-                <button class="tab-btn px-5 py-2 rounded-full bg-white shadow text-gray-600 hover:bg-purple-100 hover:text-purple-700 focus:outline-none"
-                        data-tab="tab5">Plano 5</button>
-            </div>
+    <!-- Abas (botões estilizados) -->
+    <div id="tabs" class="flex justify-center space-x-4 flex-wrap">
+        <button class="tab-btn px-6 py-3 rounded-full bg-[#e9d8f6] text-[#4b2c5e] font-semibold shadow-md 
+                       hover:bg-[#7a4fa3] hover:text-white transition duration-300"
+                data-tab="tab1">Plano 1</button>
+        <button class="tab-btn px-6 py-3 rounded-full bg-[#e9d8f6] text-[#4b2c5e] font-semibold shadow-md 
+                       hover:bg-[#7a4fa3] hover:text-white transition duration-300"
+                data-tab="tab2">Plano 2</button>
+        <button class="tab-btn px-6 py-3 rounded-full bg-[#e9d8f6] text-[#4b2c5e] font-semibold shadow-md 
+                       hover:bg-[#7a4fa3] hover:text-white transition duration-300"
+                data-tab="tab3">Plano 3</button>
+        <button class="tab-btn px-6 py-3 rounded-full bg-[#e9d8f6] text-[#4b2c5e] font-semibold shadow-md 
+                       hover:bg-[#7a4fa3] hover:text-white transition duration-300"
+                data-tab="tab4">Plano 4</button>
+        <button class="tab-btn px-6 py-3 rounded-full bg-[#e9d8f6] text-[#4b2c5e] font-semibold shadow-md 
+                       hover:bg-[#7a4fa3] hover:text-white transition duration-300"
+                data-tab="tab5">Plano 5</button>
+    </div>
 
-            <!-- Conteúdo das abas -->
-            <div id="tab-contents" class="mt-8">
-                <div id="tab1" class="tab-content hidden">
-                    <img src="lauana1.jpg" alt="Plano 1" class="rounded-lg shadow-lg mx-auto">
-                </div>
-                <div id="tab2" class="tab-content hidden">
-                    <img src="lauana2.jpg" alt="Plano 2" class="rounded-lg shadow-lg mx-auto">
-                </div>
-                <div id="tab3" class="tab-content hidden">
-                    <img src="lauana3.jpg" alt="Plano 3" class="rounded-lg shadow-lg mx-auto">
-                </div>
-                <div id="tab4" class="tab-content hidden">
-                    <img src="lauana4.jpg" alt="Plano 4" class="rounded-lg shadow-lg mx-auto">
-                </div>
-                <div id="tab5" class="tab-content hidden">
-                    <img src="lauana5.jpg" alt="Plano 5" class="rounded-lg shadow-lg mx-auto">
-                </div>
-            </div>
+    <!-- Conteúdo das abas -->
+    <div id="tab-contents" class="mt-8">
+        <div id="tab1" class="tab-content hidden">
+            <img src="lauana1.jpg" alt="Plano 1" class="rounded-lg shadow-lg mx-auto">
         </div>
+        <div id="tab2" class="tab-content hidden">
+            <img src="lauana2.jpg" alt="Plano 2" class="rounded-lg shadow-lg mx-auto">
+        </div>
+        <div id="tab3" class="tab-content hidden">
+            <img src="lauana3.jpg" alt="Plano 3" class="rounded-lg shadow-lg mx-auto">
+        </div>
+        <div id="tab4" class="tab-content hidden">
+            <img src="lauana4.jpg" alt="Plano 4" class="rounded-lg shadow-lg mx-auto">
+        </div>
+        <div id="tab5" class="tab-content hidden">
+            <img src="lauana5.jpg" alt="Plano 5" class="rounded-lg shadow-lg mx-auto">
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const tabButtons = document.querySelectorAll(".tab-btn");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        // Nenhuma aba aparece inicialmente
+        tabContents.forEach((content) => content.classList.add("hidden"));
+
+        tabButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                // Esconde todos os conteúdos
+                tabContents.forEach((content) => content.classList.add("hidden"));
+
+                // Reseta botões
+                tabButtons.forEach((b) => {
+                    b.classList.remove("bg-[#7a4fa3]", "text-white");
+                    b.classList.add("bg-[#e9d8f6]", "text-[#4b2c5e]");
+                });
+
+                // Mostra o conteúdo da aba clicada
+                document.getElementById(btn.getAttribute("data-tab")).classList.remove("hidden");
+
+                // Destaca botão ativo
+                btn.classList.remove("bg-[#e9d8f6]", "text-[#4b2c5e]");
+                btn.classList.add("bg-[#7a4fa3]", "text-white");
+            });
+        });
+    });
+</script>
+
+        
     </section>
 
     <footer>
