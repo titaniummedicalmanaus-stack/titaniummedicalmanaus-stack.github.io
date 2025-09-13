@@ -120,6 +120,35 @@
         </div>
 
         <!-- Seção de Planos com Abas -->
+        <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const tabButtons = document.querySelectorAll(".tab-btn");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        // Nenhuma aba aparece inicialmente
+        tabContents.forEach((content) => content.classList.add("hidden"));
+
+        tabButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                // Esconde todos os conteúdos
+                tabContents.forEach((content) => content.classList.add("hidden"));
+
+                // Reseta botões
+                tabButtons.forEach((b) => {
+                    b.classList.remove("bg-[#7a4fa3]", "text-white");
+                    b.classList.add("bg-[#e9d8f6]", "text-[#4b2c5e]");
+                });
+
+                // Mostra o conteúdo da aba clicada
+                document.getElementById(btn.getAttribute("data-tab")).classList.remove("hidden");
+
+                // Destaca botão ativo
+                btn.classList.remove("bg-[#e9d8f6]", "text-[#4b2c5e]");
+                btn.classList.add("bg-[#7a4fa3]", "text-white");
+            });
+        });
+    });
+</script>
 <div class="w-full max-w-4xl mx-auto mt-12 text-center">
     <h2 class="text-2xl font-bold mb-6" style="color:#7a4fa3;">
         Conheça nossos planos
